@@ -15,6 +15,7 @@ podTemplate(
         container('skaffold-insider') {
           sh """
             uname -a
+            docker version
             whoami
             pwd
             ls -al
