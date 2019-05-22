@@ -29,7 +29,7 @@ profiles:
   - name: release
     build:
       artifacts:
-      - imageName: docker.io/hhayakaw/cowweb
+      - imageName: docker.io/tax525/cowweb
         workspace: .
         docker:
           dockerfilePath: ./kubernetes/container/Dockerfile_release
@@ -44,7 +44,7 @@ profiles:
           chartPath: kubernetes/helm
           namespace: cowweb-release
           values:
-            image: docker.io/hhayakaw/cowweb
+            image: docker.io/tax525/cowweb
           setValues:
             replicaCount: 2
             ingress.enabled: true
