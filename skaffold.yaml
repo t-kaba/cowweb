@@ -2,7 +2,7 @@ apiVersion: skaffold/v1alpha2
 kind: Config
 build:
   artifacts:
-  - imageName: docker.io/tax525/cowweb
+  - imageName: gcr.io/neseng-eq1/cowweb
     workspace: .
     docker:
       dockerfilePath: ./kubernetes/container/Dockerfile_dev
@@ -15,7 +15,7 @@ deploy:
       chartPath: kubernetes/helm
       namespace: cowweb-dev
       values:
-        image: docker.io/tax525/cowweb
+        image: gcr.io/neseng-eq1/cowweb
 #      valuesFilePath: kubernetes/dev/helm-values.yaml
       setValues:
         replicaCount: 1
@@ -29,7 +29,7 @@ profiles:
   - name: release
     build:
       artifacts:
-      - imageName: gcr.io/neseng-eq1/sample-frontend:latest
+      - imageName: gcr.io/neseng-eq1/cowweb
         workspace: .
         docker:
           dockerfilePath: ./kubernetes/container/Dockerfile_release
@@ -44,7 +44,7 @@ profiles:
           chartPath: kubernetes/helm
           namespace: cowweb-release
           values:
-            image: gcr.io/neseng-eq1/sample-frontend:latest
+            image: gcr.io/neseng-eq1/cowweb
           setValues:
             replicaCount: 2
             ingress.enabled: true
