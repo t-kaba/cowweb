@@ -26,6 +26,20 @@ deploy:
         debug.port: 8081
         debug.nodePort: 30081
 profiles:
+  - name: test
+    build:
+      artifacts:
+      - imageName: docker.io/tax525/cowweb
+        workspace: .
+        docker:
+          dockerfilePath: ./kubernetes/container/Dockerfile_release
+      local:
+        skipPush: false
+      tagPolicy:
+        gitCommit: {}
+    deploy:
+      kustomize:
+        path: "./kubernetes/kustomize/test"
   - name: release
     build:
       artifacts:

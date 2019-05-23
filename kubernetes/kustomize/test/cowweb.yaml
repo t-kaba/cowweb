@@ -1,0 +1,8 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: cowweb
+  labels:
+    app: cowweb
+spec:
+  replicas: 2

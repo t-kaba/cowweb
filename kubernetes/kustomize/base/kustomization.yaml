@@ -1,0 +1,3 @@
+resources:
+- cowweb-redis.yaml
+- cowweb.yaml
