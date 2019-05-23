@@ -1,36 +1,20 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cowweb
-  labels:
-    app: cowweb
+  name: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: cowweb
-  strategy:
-    type: Recreate
+      app: web
   template:
     metadata:
       labels:
-        app: cowweb
+        app: web
     spec:
       containers:
-      - name: cowweb
-        image: tax525/cowweb
+      - name: web
+        image: nginx
+        imagePullPolicy: IfNotPresent
         ports:
-        - name: api
-          containerPort: 8080
-        readinessProbe:
-          httpGet:
-            path: /cowsay/ping
-            port: api
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /cowsay/ping
-            port: api
-          initialDelaySeconds: 15
-          periodSeconds: 20
+        - containerPort: 80
