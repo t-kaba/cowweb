@@ -29,7 +29,7 @@ profiles:
   - name: release
     build:
       artifacts:
-      - imageName: docker.io/tax525/cowweb
+      - imageName: gcr.io/neseng-eq1/sample-frontend:latest
         workspace: .
         docker:
           dockerfilePath: ./kubernetes/container/Dockerfile_release
@@ -44,7 +44,7 @@ profiles:
           chartPath: kubernetes/helm
           namespace: cowweb-release
           values:
-            image: docker.io/tax525/cowweb
+            image: gcr.io/neseng-eq1/sample-frontend:latest
           setValues:
             replicaCount: 2
             ingress.enabled: true
