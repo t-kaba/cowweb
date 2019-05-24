@@ -1,7 +1,7 @@
 podTemplate(
   label: 'skaffold',
   containers: [
-    containerTemplate(name: 'skaffold-insider', image: 'tax525/skaffold-insider:v1.0.0', ttyEnabled: true, command: 'cat')
+    containerTemplate(name: 'skaffold-insider', image: 'tax525/skaffold-insider:v1.0.1', ttyEnabled: true, command: 'cat')
   ],
   volumes: [
     hostPathVolume(hostPath: '/var/run/docker.sock', mountPath: '/var/run/docker.sock')
